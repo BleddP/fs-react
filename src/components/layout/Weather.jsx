@@ -6,7 +6,7 @@ const Weather = () => {
     const [weather, setWeather] = useState(null)
 
     useEffect(() => {
-        api.getWeather({city: 'Taipei', country: 'tw'})
+        api.getWeather({city: 'Didam', country: 'nl'})
         .then((res) => {
             setWeather(res.data)
         }).catch((err) => {
