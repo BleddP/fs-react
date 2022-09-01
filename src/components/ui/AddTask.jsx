@@ -1,8 +1,14 @@
-import { useState } from "react"
-import { v4 as uuidv4 } from 'uuid';
+import { useState, useContext } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
+// Store
+import tasklistContext from '../../store/tasklist/tasklistContext'
+import toasterContext from '../../store/toaster/toasterContext'
 
-const AddTask = ({setTask}) => {
+const AddTask = () => {
+    const { addTask } = useContext(tasklistContext)
+    const toaster = useContext(toasterContext)
+
     const [name, setName] = useState('')
     const [completed, setCompleted] = useState(false)
     const [date, setDate] = useState(null)
@@ -13,23 +19,32 @@ const AddTask = ({setTask}) => {
         if (!name) return window.alert('No name!')
         if (!date) return window.alert('CHoose a date')
 
-      const task = {
-        id: uuidv4(),
-        title: name,
-        completed,
-        date
-      }
+        const task = {
+            id: uuidv4(),
+            title: name,
+            completed,
+            date
+        }
 
-      setTask(task)
-
+        addTask(task)
+        toaster.show(`Task ${name} has been added`)
     }
 
     return (
-        <form onSubmit={add} style={{display: 'flex'}}>
-            <input type='text' placeholder='Task name' onChange={(e) => setName(e.target.value)} />
-            <input type='checkbox' onChange={(e) => setCompleted(e.currentTarget.checked)} />
+        <form onSubmit={add} style={{ display: 'flex' }}>
+            <input
+                type='text'
+                placeholder='Task name'
+                onChange={(e) => setName(e.target.value)}
+            />
+            <input
+                type='checkbox'
+                onChange={(e) => setCompleted(e.currentTarget.checked)}
+            />
             <input type='date' onChange={(e) => setDate(e.target.value)} />
-            <button type='submit' className="secondary">Submit</button>
+            <button type='submit' className='secondary'>
+                Submit
+            </button>
         </form>
     )
 }

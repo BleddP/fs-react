@@ -1,0 +1,16 @@
+.toaster {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    background-color: greenyellow;
+    padding: 12px 24px;
+    border-radius: 5px;
+    transform: translateY(200px);
+    transition: all 0.35s ease;
+    opacity: 0;
+
+    &.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

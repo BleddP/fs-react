@@ -4,12 +4,14 @@ const TasklistReducer = (state, action) => {
     switch (action.type) {
         case ADD_TASK:
             return {
-                ...state
+                ...state,
+                tasks: [...state.tasks, action.payload]
             }
 
         case REMOVE_TASK:
             return {
-                ...state
+                ...state,
+                tasks: action.payload
             }
     }
 }
