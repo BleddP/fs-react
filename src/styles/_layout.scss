@@ -1,0 +1,51 @@
+.container {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 12px;
+	box-sizing: border-box;
+
+	@include respond-min(760px) {
+		margin: 0 24px;
+	}
+
+	@include respond-min(960px) {
+		margin: 0 24px;
+	}
+
+	@include respond-min(1440px + 36px) {
+		margin: 0 auto;
+	}
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+    display: flex;
+    &--all {
+        justify-content: center;
+        align-items: center;
+    }
+
+    &--top {
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &--bottom {
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    &--left {
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &--right {
+        justify-content: flex-end;
+        align-items: center;
+    }
+ }
